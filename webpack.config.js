@@ -10,11 +10,23 @@ module.exports = {
     	filename: '[name].js',
     	sourceMapFilename: '[name].map'
     },
-    loaders: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader?presets[]=stage-0,presets[]=es2015'
-    }],
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            loader: 'babel-loader',
+            include: /src/,
+            query: {
+                presets: ['react', 'es2015', 'stage-0']
+            }
+        }, {
+            test: /\.js?$/,
+            loader: 'babel-loader',
+            include: /(src|node_modules\/\@aloompa\/web-api)/,
+            query: {
+                presets: ['es2015', 'stage-0']
+            }
+        }]
+    },
     plugings: [
         new webpack.optimize.UglifyJsPlugin()
     ]
