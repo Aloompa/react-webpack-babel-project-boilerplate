@@ -21,7 +21,7 @@ module.exports = {
         }, {
             test: /\.js?$/,
             loader: 'babel-loader',
-            include: /(src|node_modules\/\@aloompa\/web-api)/,
+            include: /src/,
             query: {
                 presets: ['es2015', 'stage-0']
             }
